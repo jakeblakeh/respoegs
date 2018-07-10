@@ -74,9 +74,9 @@ Make sure to ping the role with the @ symbol..`)
 if (message.content.toLowerCase().startsWith(prefix + `close`)) {
     if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
 
-    message.channel.send(`This ticket will be terminated in 10 seconds please type cancel to stop the cancellation of this ticket.`)
+    message.channel.send(`This Ticket Will Stay Unless You Type .close In The Next 10 Seconds`)
     .then((m) => {
-      message.channel.awaitMessages(response => response.content === '', {
+      message.channel.awaitMessages(response => response.content === '.close', {
         max: 1,
         time: 10000,
         errors: ['time'],
