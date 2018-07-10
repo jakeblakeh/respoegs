@@ -62,7 +62,11 @@ if (message.content.toLowerCase().startsWith(prefix + `new`)) {
         message.channel.send(`:white_check_mark: Your ticket has been created, #${c.name}.`);
         const embed = new Discord.RichEmbed()
         .setColor(0xCF40FA)
-        .addField(`Hey ${message.author.username}!`, `Please try explain why you opened this ticket with as much detail as possible. Our **Support Team** will be here soon to help.`)
+        .addField(`Hey ${message.author.username}!`, `Hello, Thanks for contacting the RecruitMC - Support Team, One of our Operators will be here to help you as soon as possible,
+Whilst you wait, Could you please answer a few questions so we can make this process easier for all of us?
+
+If you are here to claim a role from our #claim-role list, Please tell us which roles you would like to claim,
+Make sure to ping the role with the @ symbol..`)
         .setTimestamp();
         c.send({ embed: embed });
     }).catch(console.error);
@@ -72,9 +76,9 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
 
     message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`-confirm\`. This will time out in 10 seconds and be cancelled.`)
     .then((m) => {
-      message.channel.awaitMessages(response => response.content === '-confirm', {
+      message.channel.awaitMessages(response => response.content === '.close', {
         max: 1,
-        time: 10000,
+        time: 1,
         errors: ['time'],
       })
       .then((collected) => {
